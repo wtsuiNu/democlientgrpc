@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package com.example.grpc;
+
+option java_multiple_files = true;
+option java_package = "com.example.grpc";
+
+service MessagingService {
+  rpc message(MessagingRequest) returns (MessagingResponse) {}
+  rpc messageStream(MessagingRequest) returns (stream MessagingResponse) {}
+  rpc recordStream(stream HeartBeatRequest) returns (HeartBeatResponse) {}
+
+}
+
+message MessagingRequest {
+  string message = 1;
+}
+
+message MessagingResponse {
+  string message = 1;
+}
+
+message HeartBeatRequest {
+  int32 count = 1;
+}
+
+message HeartBeatResponse {
+  int32 count = 1;
+}
+
